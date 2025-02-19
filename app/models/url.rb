@@ -16,10 +16,6 @@
 #  index_urls_on_long_url    (long_url) UNIQUE
 #
 class Url < ApplicationRecord
-  # constants
-  # Jan 01, 2025, 01:01:01:000 UTC
-  TIME_EPOCH = 1_737_680_461_000
-
   # validations
   validates :identifier, presence: true, uniqueness: true
   validates :long_url, presence: true, uniqueness: true

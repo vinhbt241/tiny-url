@@ -24,7 +24,7 @@ class Url < ApplicationRecord
   validates :long_url, presence: true, uniqueness: true
 
   # callbacks
-  after_create :generate_short_url!
+  after_commit :generate_short_url!, on: :create
 
   private
 
@@ -32,6 +32,6 @@ class Url < ApplicationRecord
     timestamp = DateTime.current.to_i - TIME_EPOCH
     generated_url = Base64.urlsafe_encode64([timestamp, id.to_i].join)
 
-    self[:short_url] = generated_url
+    update!(short_url: generated_url)
   end
 end

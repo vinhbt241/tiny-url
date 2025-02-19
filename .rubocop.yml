@@ -19,3 +19,9 @@ Metrics/MethodLength:
 
 Style/Documentation:
   Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false

@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
 
   def decode
     identifier = (params[:url] || '').split('/').last
-    url = Url.find_by(identifier:)
+    url = Url.find_by!(identifier:)
 
     render json: { decoded_url: url.try(:url) }
   end

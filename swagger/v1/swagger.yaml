@@ -1,0 +1,53 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/encode":
+    post:
+      summary: encode input URL into short URL
+      tags:
+      - Urls
+      parameters: []
+      responses:
+        '200':
+          description: Url encoded
+        '422':
+          description: Url is invalid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  example: https://example-input.com
+              required:
+              - url
+  "/decode":
+    get:
+      summary: return decoded URL from input short URL
+      tags:
+      - Urls
+      parameters:
+      - name: url
+        in: query
+        example: http://localhost:3000/iBx1qixjk
+        schema:
+          type: string
+      responses:
+        '200':
+          description: URL decoded
+        '404':
+          description: URL not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

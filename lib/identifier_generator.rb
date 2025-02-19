@@ -15,7 +15,6 @@ class IdentifierGenerator
   class << self
     def generate_identifier
       unique_number = generate_unique_number
-
       Base62.encode_int(unique_number)
     end
 

@@ -4,6 +4,13 @@ require 'rails_helper'
 
 RSpec.describe IdentifierGenerator do
   describe '.generate_identifier' do
+    it 'generate unique identifier based on timestamp, machine ID and sequence number' do
+      allow(ENV).to receive(:fetch).with('MACHINE_ID', 1).and_return(1)
+      allow(Time).to receive(:current).and_return(DateTime.new(2025, 2, 19, 1, 1, 1))
+
+      expect(described_class.generate_identifier).to eq('h9V5378cK')
+    end
+
     it 'generates unique identifiers' do
       identifiers = Array.new(5) { described_class.generate_identifier }
       expect(identifiers.uniq.size).to eq(5)

@@ -3,7 +3,9 @@
 class Base62
   CHARSET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.chars.freeze
 
-  def self.encode_int(number)
+  def self.encode(number)
+    raise ArgumentError, 'Input must be an integer.' unless number.is_a?(Integer)
+
     return CHARSET[0] if number.zero?
 
     base62 = ''

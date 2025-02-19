@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   post :encode, to: 'urls#encode'
   get :decode, to: 'urls#decode'
+  get '/:identifier', to: 'urls#show'
 end

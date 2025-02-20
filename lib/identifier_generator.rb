@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IdentifierGenerator
-  # Jan 01, 2025, 01:01:01:000 UTC
+  # Jan 24, 2025, 01:01:01:000 UTC
   EPOCH = 1_737_680_461_000
   # 10-bit machine ID limit (2^10 - 1)
   MAX_MACHINE_ID = 1023

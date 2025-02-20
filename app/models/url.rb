@@ -19,11 +19,9 @@ class Url < ApplicationRecord
   # validations
   validates :identifier, presence: true, uniqueness: true
   validates :url, presence: true, uniqueness: true
-  validate :url, :url_format_is_valid
-
-  def url_format_is_valid
-    return if url.blank?
-
-    errors.add(:url, 'is not a valid URL') unless url.match?(URI::DEFAULT_PARSER.make_regexp)
-  end
+  validates :url, format: {
+    with: URI::DEFAULT_PARSER.make_regexp(%w[http https]),
+    message: :invalid_url
+  }
+  validates :url, safe_url: true
 end

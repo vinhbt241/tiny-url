@@ -31,7 +31,16 @@ RSpec.describe Url, type: :model do
 
       it 'includes an error message' do
         url.valid?
-        expect(url.errors[:url]).to include('is not a valid URL')
+        expect(url.errors[:url]).to include('must be a valid URL starting with http or https')
+      end
+    end
+
+    context 'when url appears to be malicious' do
+      let(:url) { build(:url, url: "https://malicious-url.com?q=<script>alert('XSS')</script>") }
+
+      it 'includes an error message' do
+        url.valid?
+        expect(url.errors[:url]).to include('contains potentially malicious content or an invalid scheme')
       end
     end
   end

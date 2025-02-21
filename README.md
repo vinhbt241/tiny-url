@@ -33,7 +33,7 @@ For detailed installation instructions, please check the [docs/INSTALLATION.md](
 - **Threat:** Without proper rate limiting and authentication, attackers could flood the system with requests.
 - **Mitigation:**
   - Implement user authentication to identify and block malicious users.
-  - Enforce rate limiting based on IP addresses and user accounts.
+  - Enforce rate limiting based on IP addresses (implemented) and user accounts.
 
 ### Data Integrity and Privacy
 - **Threat:** If URLs contain sensitive information (e.g., tokens or PII), exposure through shortened links can lead to data breaches.
@@ -51,7 +51,7 @@ For detailed installation instructions, please check the [docs/INSTALLATION.md](
 ### Cross-Site Scripting (XSS)
 - **Threat:** Malicious links could exploit users' browsers through cross-site scripting (XSS).
 - **Mitigation:**
-  - Prevent users from submitting URLs that exhibit signs of XSS.
+  - Prevent users from submitting URLs that exhibit signs of XSS (implemented).
   - Avoid executing JavaScript within link previews.
 
 ### Analytics & Tracking Risks
